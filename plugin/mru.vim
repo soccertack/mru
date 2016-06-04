@@ -262,19 +262,8 @@ if !exists('MRU_Auto_Close')
     let MRU_Auto_Close = 1
 endif
 
-if !exists('MRU_File')
-    if has('unix') || has('macunix')
-        let MRU_File = $HOME . '/.vim_mru_files'
-    else
-        let MRU_File = $VIM . '/_vim_mru_files'
-        if has('win32')
-            " MS-Windows
-            if $USERPROFILE != ''
-                let MRU_File = $USERPROFILE . '\_vim_mru_files'
-            endif
-        endif
-    endif
-endif
+" Create _vim_mru_files under current directory always
+let MRU_File = '.' . '/_vim_mru_files'
 
 " Option for enabling or disabling the MRU menu
 if !exists('MRU_Add_Menu')
