@@ -262,8 +262,8 @@ if !exists('MRU_Auto_Close')
     let MRU_Auto_Close = 1
 endif
 
-" Create _vim_mru_files under current directory always
-let MRU_File = '.' . '/_vim_mru_files'
+" Create .vim_mru_files under current directory always
+let MRU_File = '.' . '/.vim_mru_files'
 
 " Option for enabling or disabling the MRU menu
 if !exists('MRU_Add_Menu')
