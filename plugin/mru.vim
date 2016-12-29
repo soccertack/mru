@@ -309,7 +309,7 @@ endif
 " part to be highlighted.
 if !exists('MRU_Filename_Format')
     let MRU_Filename_Format = {
-        \   'formatter': 'fnamemodify(v:val, ":t") . " (" . v:val . ")"',
+        \   'formatter': 'fnamemodify(v:val, ":t") . " (" . fnamemodify(v:val, ":.") . ")"',
         \   'parser': '(\zs.*\ze)',
         \   'syntax': '^.\{-}\ze('
         \}
