@@ -323,7 +323,8 @@ endif
 if !exists('MRU_Filename_Format')
     let MRU_Filename_Format = {
         \   'formatter': 'fnamemodify(v:val, ":t") . " (" . fnamemodify(v:val, ":.:h") . ")"',
-        \   'parser': '(\zs.*\ze)',
+        \   'dir_parser': '(\zs.*\ze)',
+        \   'file_parser': '^.\{-}\ze\s',
         \   'syntax': '^.\{-}\ze('
         \}
 endif
@@ -660,8 +661,7 @@ function! s:MRU_Select_File_Cmd(opt) range
         endif
 
         " The text in the MRU window contains the filename in parenthesis
-        let file = matchstr(f, g:MRU_Filename_Format.parser)
-
+        let file = matchstr(f, g:MRU_Filename_Format.dir_parser) . "/" . matchstr(f, g:MRU_Filename_Format.file_parser)
         call s:MRU_Window_Edit_File(file, multi, edit_type, open_type)
 
         if a:firstline != a:lastline
