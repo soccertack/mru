@@ -377,8 +377,8 @@ function! s:MRU_AddFile(acmd_bufnr)
         return
     endif
 
-    " Get the full path to the filename
-    let fname = fnamemodify(bufname(a:acmd_bufnr + 0), ':p')
+    " Get the relative path to the filename
+    let fname = fnamemodify(bufname(a:acmd_bufnr + 0), ':.')
     if fname == ''
         return
     endif
